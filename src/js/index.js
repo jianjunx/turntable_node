@@ -9,14 +9,16 @@
             arr.push(code)
         }
     }
-    pushArr(1,10)
-    pushArr(2,20)
-    pushArr(3,30)
-    pushArr(4,40)
+    pushArr(1,2)
+    pushArr(2,200)
+    pushArr(3,300)
+    pushArr(4,498)
 
 var whichAward = function(deg) {
     if(deg>=0&&deg<90){
-
+        $.get('./fs/mwrite.php?extend=x',function(res){
+            console.log(res);
+        })
 
         return 'one'
     }else if(deg>=90&&deg<180){
@@ -35,7 +37,7 @@ var whichAward = function(deg) {
 }
 
 function randomDeg(){
-    var tp = arr[Math.floor(Math.random()*100)]
+    var tp = arr[Math.floor(Math.random()*arr.length)]
     console.log('tp:'+tp);
     var tl = Math.floor(Math.random()*90)
     if(tp==1){
@@ -68,14 +70,16 @@ var KinerLottery = new KinerLottery({
     }, //禁止抽奖时回调
 
     clickCallback: function() {
-
+        var that = this
         //此处访问接口获取奖品
-        // function random() {
-        //     console.log()
-        //     return randomDeg();
-        // }
+        $.get('./fs/mread.php',function(res){
+            if(res.length>=100){
+                arr.shift()
+                arr.shift()
+            }
+            that.goKinerLottery(randomDeg());
+        })
 
-        this.goKinerLottery(randomDeg());
 
     }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 

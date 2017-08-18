@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result View</title>
+    <style>
+        table {
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+
+        tr {
+            margin: 5px;
+            /* background-color: deeppink; */
+            border: 1px solid #000;
+        }
+
+        td {
+            float: left;
+            margin: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="container">
+
+    </table>
+
+</body>
+<script>
+    var xhr = new XMLHttpRequest;
+    xhr.open('get', './fread.php')
+    xhr.onload = function () {
+        var data = JSON.parse('[' + xhr.responseText.slice(0, -1) + ']')
+        var tpl = data.map(function (v) {
+            return '<tr><td>' + v.name + '</td><td>' + v.age + '</td></tr>'
+        }).join('')
+        document.querySelector('.container').innerHTML = tpl;
+    }
+    xhr.send(null)
+</script>
+
+</html>
+
+<!-- 
+    姓名 
+    手机号
+    微信号
+    地址
+
+
+    1
+
+
+
+
+
+ -->
