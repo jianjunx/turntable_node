@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>大转盘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/kinerLottery.css">
+
+</head>
+
+<body>
+
+
+    <div id="box" class="box">
+        <div class="outer KinerLottery KinerLotteryContent"><img src="./imgs/lotteryContent.png"></div>
+        <!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
+        <div class="inner KinerLotteryBtn start"></div>
+    </div>
+    <script src="js/lib/zepto.min.js"></script>
+    <script src="js/kinerLottery.js"></script>
+   <script type="text/javascript" src="./js/index.js"></script>
+</body>
+
+</html>
