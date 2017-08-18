@@ -89,3 +89,5 @@ var KinerLottery = new KinerLottery({
 
         } //抽奖结束回调
 });
+
+wx.hideOptionMenu();
