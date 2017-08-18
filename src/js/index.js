@@ -19,7 +19,7 @@ var whichAward = function(deg) {
         $.get('./fs/mwrite.php?extend=x',function(res){
             console.log(res);
         })
-
+        // $('.mask').css('display','block')
         return 'one'
     }else if(deg>=90&&deg<180){
 
@@ -89,11 +89,18 @@ var KinerLottery = new KinerLottery({
 
             // alert("恭喜您获得:" + whichAward(deg));
             whichAward(deg)
-
+            localStorage.setItem('flang','ok')
+            document.querySelector('.KinerLotteryBtn').classList.add('completed')
+            document.querySelector('.KinerLotteryBtn').classList.remove('start')
 
         } //抽奖结束回调
 });
 
+
+if(localStorage.getItem('flang')){
+    document.querySelector('.KinerLotteryBtn').classList.add('completed')
+    document.querySelector('.KinerLotteryBtn').classList.remove('start')
+}
 /** 屏蔽分享 */
 // function onBridgeReady() {
 //     WeixinJSBridge.call('hideOptionMenu');
