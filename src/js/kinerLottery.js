@@ -52,7 +52,7 @@
         // alert(this.defNum);
 
         //点击抽奖
-        $('body').on('singleTap', ".KinerLotteryBtn", function() {
+        $('body').on('tap', ".KinerLotteryBtn", function() {
 
 
             if ($(this).hasClass('start') && !self.doing) {
