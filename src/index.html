@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>大转盘</title>
@@ -9,18 +10,31 @@
 </head>
 
 <body>
-<!-- 缩略图设置 -->
-<img class="slt" src="./imgs/lotteryContent.png" alt="" srcset="">
+    <!-- 缩略图设置 -->
+    <img class="slt" src="./imgs/lotteryContent.png" alt="" srcset="">
 
     <div id="box" class="box">
         <div class="outer KinerLottery KinerLotteryContent"><img src="./imgs/lotteryContent.png"></div>
         <!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
         <div class="inner KinerLotteryBtn start"></div>
     </div>
-    
-    <div class="mask">
-        <div class="mask-cont"></div>
-    </div>
+
+            <div class="mask">
+                    <div class="mask-img">
+                        <div class="mask-close">×</div>
+            
+            
+                        <form class="submit">
+                            <h3>恭喜您!</h3>
+                            <input name="name" type="text" placeholder="您的姓名">
+                            <input name="mobile" type="bumber" placeholder="您的手机号">
+                            <input name="wechat" type="text" placeholder="您的微信号">
+                            <input name="address" type="text" placeholder="您的地址">
+                            <label for="submint"></label>
+                            <input type="submit" id="submit">
+                        </form>
+                    </div>
+                </div>
 
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -29,4 +43,5 @@
 <script src="./js/lib/ajax.js"></script>
 <script src="js/kinerLottery.js"></script>
 <script src="./js/index.js"></script>
+
 </html>

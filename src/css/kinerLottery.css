@@ -46,6 +46,11 @@ p,li,b,span,div,strong,h1,h2,h3,h4,h5,h6,a,ul{
     user-select: none;
 }
 
+input{
+    outline: none;
+    border: none;
+}
+
 .box {
     width: 14rem;
     height: 14rem;
@@ -127,16 +132,35 @@ p,li,b,span,div,strong,h1,h2,h3,h4,h5,h6,a,ul{
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #000;
-    opacity: .8;
+    background-color: rgba(0, 0, 0, .7);
 }
-.mask-cont{
-    height: 300px;
-    width: 80%;
+.mask-img{
+    box-sizing: border-box;
+    padding: 1rem;
+    min-height: 15rem;
+    min-width: 15rem;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 1rem;
+}
+.mask-close{
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 1.5rem;
+}
+.submit input{
+    margin-top: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.5rem;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding-left: 1rem;
+}
+.submit{
+    display: none
 }
