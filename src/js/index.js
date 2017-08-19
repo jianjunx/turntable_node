@@ -18,29 +18,29 @@
  var whichAward = function (deg) {
      console.log(deg);
      if (deg >= 0 && deg < 90) {
-        $('.mask').show()
-        
-                 console.log('4等奖');
-                 
-                 return 'four'
-         
+         $('.mask').show()
+
+         console.log('4等奖');
+
+         return 'four'
+
      } else if (deg >= 90 && deg < 180) {
 
          $('.mask').show()
 
          console.log('2等奖');
-         
+
          return 'tow'
      } else if (deg >= 180 && deg < 270) {
 
          $('.mask').show()
 
          console.log('3等奖');
-         
+
          return 'three'
      } else {
 
-       
+
 
          console.log('一等奖');
          $.get('./fs/mwrite.php?extend=x', function (res) {
@@ -64,7 +64,7 @@
      } else if (tp == 3) {
          return 180 + tl
      } else if (tp == 4) {
-         console.log(270 , tl);
+         console.log(270, tl);
          console.log(270 + tl);
          return 270 + tl
      }
@@ -96,27 +96,27 @@
                  arr.shift()
                  arr.shift()
              }
-             that.goKinerLottery(50);
-            //  randomDeg()
+             that.goKinerLottery(randomDeg());
+             //  randomDeg()
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 
      KinerLotteryHandler: function (deg) {
          whichAward(deg)
 
-        //  localStorage.setItem('flang', 'ok')
-        //  document.querySelector('.KinerLotteryBtn').classList.add('completed')
-        //  document.querySelector('.KinerLotteryBtn').classList.remove('start')
+         localStorage.setItem('flang', 'ok')
+         document.querySelector('.KinerLotteryBtn').classList.add('completed')
+         document.querySelector('.KinerLotteryBtn').classList.remove('start')
 
      } //抽奖结束回调
  });
 
-//  判断是否参加过活动
+ //  判断是否参加过活动
 
-//  if (localStorage.getItem('flang')) {
-//      document.querySelector('.KinerLotteryBtn').classList.add('completed')
-//      document.querySelector('.KinerLotteryBtn').classList.remove('start')
-//  }
+ if (localStorage.getItem('flang')) {
+     document.querySelector('.KinerLotteryBtn').classList.add('completed')
+     document.querySelector('.KinerLotteryBtn').classList.remove('start')
+ }
 
  // 表单提交
  $('.submit').on('submit', function (e) {
@@ -127,25 +127,25 @@
          data: $(this).serialize(),
          success: function (res) {
 
-            $('.submit').html('<h1>提交成功</h1>')
+             $('.submit').html('<h1>提交成功</h1>')
 
-             setTimeout(function(){
-                $('.mask').hide()
-             },3000)
+             setTimeout(function () {
+                 $('.mask').hide()
+             }, 3000)
          }
      })
  })
 
- $('.mask').on('tap',function () {
+ $('.mask').on('tap', function () {
      $(this).hide()
  })
  $('.mask-close').on('tap', function () {
      $('.mask').hide()
  })
-// 阻止事件冒泡
-$('.mask-img').on('tap',function(e){
-    e.stopPropagation()
-})
+ // 阻止事件冒泡
+ $('.mask-img').on('tap', function (e) {
+     e.stopPropagation()
+ })
 
 
 
