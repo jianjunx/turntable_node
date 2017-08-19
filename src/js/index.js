@@ -112,10 +112,10 @@
      } //抽奖结束回调
  });
 
- if (localStorage.getItem('flang')) {
-     document.querySelector('.KinerLotteryBtn').classList.add('completed')
-     document.querySelector('.KinerLotteryBtn').classList.remove('start')
- }
+//  if (localStorage.getItem('flang')) {
+//      document.querySelector('.KinerLotteryBtn').classList.add('completed')
+//      document.querySelector('.KinerLotteryBtn').classList.remove('start')
+//  }
 
  // 表单提交
  $('.submit').on('submit', function (e) {
