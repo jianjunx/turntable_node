@@ -101,9 +101,7 @@
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 
-
      KinerLotteryHandler: function (deg) {
-
          whichAward(deg)
 
         //  localStorage.setItem('flang', 'ok')
@@ -112,6 +110,8 @@
 
      } //抽奖结束回调
  });
+
+//  判断是否参加过活动
 
 //  if (localStorage.getItem('flang')) {
 //      document.querySelector('.KinerLotteryBtn').classList.add('completed')
@@ -126,10 +126,14 @@
          type: 'get',
          data: $(this).serialize(),
          success: function (res) {
-             console.log(res);
+
+            $('.submit').html('<h1>提交成功</h1>')
+
+             setTimeout(function(){
+                $('.mask').hide()
+             },3000)
          }
      })
-     $('.mask').hide()
  })
 
  $('.mask').on('tap',function () {
