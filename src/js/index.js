@@ -96,7 +96,8 @@
                  arr.shift()
                  arr.shift()
              }
-             that.goKinerLottery(randomDeg());
+             that.goKinerLottery(50);
+            //  randomDeg()
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 
