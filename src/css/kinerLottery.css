@@ -31,7 +31,8 @@ html {
 html, body {
     padding: 0;
     margin: 0;
-    background: #fffeea;
+    /* background: #fffeea; */
+    background: url('../imgs/bg.jpg') no-repeat center/cover;
     height: 100%;
 }
 
@@ -52,12 +53,12 @@ input{
 }
 
 .box {
-    width: 14rem;
-    height: 14rem;
+    width: 12rem;
+    height: 12rem;
     position: relative;
     margin: 0 auto;
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
@@ -132,9 +133,10 @@ input{
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .8);
 }
 .mask-img{
+    /* display: none; */
     box-sizing: border-box;
     padding: 1rem;
     min-height: 15rem;
@@ -161,6 +163,10 @@ input{
     border-radius: 5px;
     padding-left: 1rem;
 }
-.submit{
+/* .submit{
     display: none
+} */
+.mask-mony{
+    height: 100%;
+    width: 100%;
 }

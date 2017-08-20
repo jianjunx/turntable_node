@@ -19,7 +19,8 @@
      console.log(deg);
      if (deg >= 0 && deg < 90) {
          $('.mask').show()
-
+         $('.mask-mony').attr('src','./imgs/no4.png')
+         
          console.log('4等奖');
 
          return 'four'
@@ -27,28 +28,55 @@
      } else if (deg >= 90 && deg < 180) {
 
          $('.mask').show()
-
+        $('.mask-mony').attr('src','./imgs/no2.png')
          console.log('2等奖');
 
          return 'tow'
      } else if (deg >= 180 && deg < 270) {
 
          $('.mask').show()
-
+         $('.mask-mony').attr('src','./imgs/no3.png')
+         
          console.log('3等奖');
-
+         
          return 'three'
      } else {
-
-
-
          console.log('一等奖');
          $.get('./fs/mwrite.php?extend=x', function (res) {
              console.log(res);
          })
          $('.mask').show()
-         $('.submit').show()
+        //  $('.submit').show()
+        $('.mask-mony').on('tap',function(e){
+            $('.mask').html(`<div class="mask-img">
+            <div class="mask-close">×</div>
+            <form class="submit">
+                <h3>请输入您的信息</h3>
+                <input name="name" type="text" placeholder="您的姓名">
+                <input name="mobile" type="bumber" placeholder="您的手机号">
+                <input name="wechat" type="text" placeholder="您的微信号">
+                <input name="address" type="text" placeholder="您的地址">
+                <input type="submit" id="submit">
+            </form>
+        </div>`)  
 
+        $('.submit').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: './fs/fwrite.php',
+                type: 'get',
+                data: $(this).serialize(),
+                success: function (res) {
+       
+                    $('.submit').html('<h1>提交成功</h1>')
+       
+                    setTimeout(function () {
+                    $('.mask').hide()
+                    }, 3000)
+                }
+            })
+        })
+        })
          return 'one'
      }
  }
@@ -96,7 +124,7 @@
                  arr.shift()
                  arr.shift()
              }
-             that.goKinerLottery(randomDeg());
+             that.goKinerLottery(20);
              //  randomDeg()
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
@@ -119,34 +147,20 @@
  }
 
  // 表单提交
- $('.submit').on('submit', function (e) {
-     e.preventDefault();
-     $.ajax({
-         url: './fs/fwrite.php',
-         type: 'get',
-         data: $(this).serialize(),
-         success: function (res) {
 
-             $('.submit').html('<h1>提交成功</h1>')
 
-             setTimeout(function () {
-                 $('.mask').hide()
-             }, 3000)
-         }
-     })
- })
-
- $('.mask').on('tap', function () {
-     $(this).hide()
- })
+//  $('.mask').on('tap', function () {
+//      $(this).hide()
+//  })
  $('.mask-close').on('tap', function () {
      $('.mask').hide()
  })
  // 阻止事件冒泡
- $('.mask-img').on('tap', function (e) {
-     e.stopPropagation()
- })
+//  $('.mask-img').on('tap', function (e) {
+//      e.stopPropagation()
+//  })
 
+ 
 
 
 
