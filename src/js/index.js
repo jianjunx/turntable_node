@@ -92,8 +92,9 @@
  }
 
  function randomDeg() {
-     var tp = arr[Math.floor(Math.random() * arr.length)]
-     console.log('tp:' + tp);
+    //  var tp = arr[Math.floor(Math.random() * arr.length)]
+     var tp = Math.floor(Math.random()*4)+1
+    //  console.log('tp:' + tp);
      var tl = Math.floor(Math.random() * 90)
      if (tp == 1) {
          return 0 + tl
@@ -134,7 +135,7 @@
                  arr.shift()
                  arr.shift()
              }
-             that.goKinerLottery(20);
+             that.goKinerLottery(randomDeg());
              //  randomDeg()
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
