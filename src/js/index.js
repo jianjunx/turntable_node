@@ -1,8 +1,4 @@
- /**
-  * 根据转盘旋转角度判断获得什么奖品
-  * @param deg
-  * @returns {*}
-  */
+
  var whichAward = function (deg) {
      console.log('角度：' + deg);
      if (deg >= 260 && deg < 280) {
@@ -151,7 +147,7 @@
  if (localStorage.getItem('flang')) {
      document.querySelector('.KinerLotteryBtn').classList.add('completed')
      document.querySelector('.KinerLotteryBtn').classList.remove('start')
- }
+ };
 
  // 表单提交
 

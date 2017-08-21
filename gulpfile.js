@@ -33,6 +33,13 @@ gulp.task('minZepto',function(){
 gulp.task('jsmin',function(){
     gulp.src(['./src/js/kinerLottery.js','./src/js/index.js'])
     .pipe(concat('index.all.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./dist/js'))
 })
+
+// gulp.task('allmin',function(){
+//     gulp.src('./dist/js/index.all.js')
+//     .pipe(uglify())
+//     .pipe(gulp.dest('./dist/js'))
+// })
+
