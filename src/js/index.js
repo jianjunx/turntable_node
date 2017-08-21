@@ -3,61 +3,45 @@
   * @param deg
   * @returns {*}
   */
- var arr = []
-
- function pushArr(code, len) {
-     for (var i = 0; i < len; i++) {
-         arr.push(code)
-     }
- }
- pushArr(1, 2)
- pushArr(2, 200)
- pushArr(3, 300)
- pushArr(4, 498)
-
  var whichAward = function (deg) {
-     console.log(deg);
-     if (deg >= 0 && deg < 90) {
+     console.log('角度：' + deg);
+     if (deg >= 260 && deg < 280) {
+         window.localStorage.setItem('prize', 'no4')
          $('.mask').show()
          $('.mask-mony').attr('src', './imgs/no4.png').on('tap', function () {
-
              alert('这是要跳转页面的操作')
+
+             window.localStorage.removeItem('prize')             
          })
-
          console.log('4等奖');
-
          return 'four'
 
-     } else if (deg >= 90 && deg < 180) {
-
+     } else if (deg >= 210 && deg <= 230) {
+         window.localStorage.setItem('prize', 'no2')
          $('.mask').show()
          $('.mask-mony').attr('src', './imgs/no2.png').on('tap', function () {
-
              alert('这是要跳转页面的操作')
-         })
 
+             window.localStorage.removeItem('prize')
+         })
 
          return 'tow'
-     } else if (deg >= 180 && deg < 270) {
-
+     } else if (deg >= 310 && deg <= 330) {
+         window.localStorage.setItem('prize', 'no3')
          $('.mask').show()
          $('.mask-mony').attr('src', './imgs/no3.png').on('tap', function () {
-
              alert('这是要跳转页面的操作')
+
+             window.localStorage.removeItem('prize')
          })
-
-
-         console.log('3等奖');
 
          return 'three'
-     } else {
-         console.log('一等奖');
+     } else if (deg <= 360 && deg >= 340) {
+         window.localStorage.setItem('prize', 'no1')
          $.get('./fs/mwrite.php?extend=x', function (res) {
-             console.log(res);
+             //  console.log(res);
          })
          $('.mask').show()
-         //  $('.submit').show()
-         // <div class="mask-close">×</div>
          $('.mask-mony').on('tap', function (e) {
              $('.mask').html(`<div class="mask-img">
             <form class="submit">
@@ -69,7 +53,6 @@
                 <input type="submit" id="submit">
             </form>
         </div>`)
-
              $('.submit').on('submit', function (e) {
                  e.preventDefault();
                  $.ajax({
@@ -77,9 +60,8 @@
                      type: 'get',
                      data: $(this).serialize(),
                      success: function (res) {
-
+                        window.localStorage.removeItem('prize')
                          $('.submit').html('<h1>提交成功</h1>')
-
                          setTimeout(function () {
                              $('.mask').hide()
                          }, 3000)
@@ -91,22 +73,36 @@
      }
  }
 
- function randomDeg() {
-    //  var tp = arr[Math.floor(Math.random() * arr.length)]
-     var tp = Math.floor(Math.random()*4)+1
-    //  console.log('tp:' + tp);
-     var tl = Math.floor(Math.random() * 90)
-     if (tp == 1) {
-         return 0 + tl
-     } else if (tp == 2) {
-         return 90 + tl
-     } else if (tp == 3) {
-         return 180 + tl
-     } else if (tp == 4) {
-         console.log(270, tl);
-         console.log(270 + tl);
-         return 270 + tl
+ //  概率判断
+ function randomDeg(i) {
+     var nub = Math.floor(Math.random() * 4) + i
+     //  var nub = 600;
+     var plus = Math.floor(Math.random() * 20)
+     if (nub == 0 || nub == 1) {
+         return 0 + plus
+     } else if (nub > 1 && nub <= 200) {
+         return 130 + plus
+     } else if (nub > 200 && nub <= 500) {
+         return 30 + plus
+     } else if (nub > 500 && nub < 1000) {
+         return 80 + plus
      }
+ }
+
+ // 推出后可以继续领取
+ function retry(prize) {
+     
+     console.log(prize);
+     if (!prize) {
+         alert('您已经领取过奖品了哦！')
+         return
+     }
+     $('.mask').show()
+     $('.mask-mony').attr('src', './imgs/' + prize + '.png').on('tap', function () {
+         alert('这是要跳转页面的操作')
+         
+         window.localStorage.removeItem('prize')
+     })
  }
 
  var KinerLottery = new KinerLottery({
@@ -121,22 +117,22 @@
                  alert("活动尚未开始");
                  break;
              case "completed":
-                 alert("您已经参与过活动了");
+             console.log(window.localStorage.getItem('prize'));
+                 retry(window.localStorage.getItem('prize'))
                  break;
          }
-
      }, //禁止抽奖时回调
 
      clickCallback: function () {
          var that = this
          //此处访问接口获取奖品
          $.get('./fs/mread.php', function (res) {
-             if (res.length >= 100) {
-                 arr.shift()
-                 arr.shift()
-             }
-             that.goKinerLottery(randomDeg());
-             //  randomDeg()
+             //  if (res.length >= 100) {
+             //     // that.goKinerLottery(randomDeg(2));                
+             //     return
+             //  }
+             that.goKinerLottery(randomDeg(0));
+             //  randomDeg(0)
          })
      }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 
@@ -160,16 +156,7 @@
  // 表单提交
 
 
- //  $('.mask').on('tap', function () {
- //      $(this).hide()
- //  })
- //  $('.mask-close').on('tap', function () {
- //      $('.mask').hide()
- //  })
- // 阻止事件冒泡
- //  $('.mask-img').on('tap', function (e) {
- //      e.stopPropagation()
- //  })
+
 
 
 
