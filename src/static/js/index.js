@@ -34,9 +34,16 @@
          return 'three'
      } else if (deg <= 360 && deg >= 340) {
          window.localStorage.setItem('prize', 'no1')
-         $.get('./fs/mwrite.php?extend=x', function (res) {
-             //  console.log(res);
-         })
+         $.ajax({
+             url:'./put/seat',
+             type:'post',
+             data:{
+                author:'jsung'
+             },
+             success:function (res) {
+                 console.log(res);
+             }
+         });
          $('.mask').show()
          $('.mask-mony').on('tap', function (e) {
              $('.mask').html(`<div class="mask-img">
@@ -52,8 +59,8 @@
              $('.submit').on('submit', function (e) {
                  e.preventDefault();
                  $.ajax({
-                     url: './fs/fwrite.php',
-                     type: 'get',
+                     url: './put/userinfo',
+                     type: 'post',
                      data: $(this).serialize(),
                      success: function (res) {
                         window.localStorage.removeItem('prize')
@@ -122,11 +129,11 @@
      clickCallback: function () {
          var that = this
          //此处访问接口获取奖品
-         $.get('./fs/mread.php', function (res) {
-             //  if (res.length >= 100) {
-             //     // that.goKinerLottery(randomDeg(2));                
-             //     return
-             //  }
+         $.get('./get/length', function (res) {
+              if (res.len >= 100) {
+                 that.goKinerLottery(randomDeg(2));                
+                 return
+              }
              that.goKinerLottery(randomDeg(0));
              //  randomDeg(0)
          })
