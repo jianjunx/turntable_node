@@ -1,0 +1,1 @@
+"use strict";var _require=require("path"),join=_require.join;exports.clearView=function(e,i){i.sendFile(join(__dirname,"../views/clear.html"))},exports.resultView=function(e,i){i.sendFile(join(__dirname,"../views/resultView.html"))},exports.indexView=function(e,i){i.sendFile(join(__dirname,"../views/index.html"))};

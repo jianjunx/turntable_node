@@ -32,7 +32,7 @@
 </body>
 <script>
     var xhr = new XMLHttpRequest;
-    xhr.open('get', '../get/result')
+    xhr.open('get', './userinfo')
     xhr.onload = function () {
         var data = JSON.parse(xhr.responseText)
         var tpl = data.map(function (v) {

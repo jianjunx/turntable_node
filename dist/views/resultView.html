@@ -5,7 +5,6 @@
 
         tr {
             margin: 5px;
-            /* background-color: deeppink; */
             border: 1px solid #000;
         }
 
@@ -13,11 +12,11 @@
             float: left;
             margin: 10px 20px;
         }</style></head><body><table class="container"></table></body><script>var xhr = new XMLHttpRequest;
-    xhr.open('get', './fread.php')
+    xhr.open('get', './userinfo')
     xhr.onload = function () {
-        var data = JSON.parse('[' + xhr.responseText.slice(0, -1) + ']')
+        var data = JSON.parse(xhr.responseText)
         var tpl = data.map(function (v) {
-            return '<tr><td>' + v.name + '</td><td>' + v.age + '</td></tr>'
+            return '<tr><td>' + v.name + '</td><td>' + v.mobile + '</td><td>' + v.wechat + '</td><td>' + v.address + '</td></tr>'
         }).join('')
         document.querySelector('.container').innerHTML = tpl;
     }
