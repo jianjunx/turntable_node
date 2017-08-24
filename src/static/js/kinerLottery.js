@@ -1,60 +1,32 @@
 /**
  * 注意：本插件运用了rem屏幕适配方案，一律采用rem作为单位，若项目中不是采用这种方案的，请在kinerTreeMenu.css中修改样式，此段代码不会影响功能使用，仅会影响控件样式
  */
-
 (function(win, doc, $) {
-
     var defaultOpt = {
-
         rotateNum: 5, //转盘转动圈数
         body: "", //大转盘整体的选择符或zepto对象
-
-
         disabledHandler: function() {}, //禁止抽奖时回调
 
         clickCallback: function() {}, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
 
         KinerLotteryHandler: function(deg) {} //抽奖结束回调
-
-
     };
 
-
-
     function KinerLottery(opts) {
-
         this.opts = $.extend(true, {}, defaultOpt, opts);
-
         this.doing = false;
-
         this.init();
-
     }
 
     KinerLottery.prototype.setOpts = function(opts) {
-
-
         this.opts = $.extend(true, {}, defaultOpt, opts);
-
         this.init();
-
     };
-
     KinerLottery.prototype.init = function() {
-
         var self = this;
-
-
         this.defNum = this.opts.rotateNum * 360; //转盘需要转动的角度
-        // console.log(this.defNum);
-
-
-        // alert(this.defNum);
-
         //点击抽奖
         $('body').on('tap', ".KinerLotteryBtn", function() {
-
-
             if ($(this).hasClass('start') && !self.doing) {
 
                 // console.log('点击');

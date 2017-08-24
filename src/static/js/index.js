@@ -121,7 +121,7 @@ if (localStorage.getItem('flang')) {
     // document.querySelector('.KinerLotteryBtn').classList.remove('start')
 };
 
-// 表单提交
+// 一等奖弹出框
 function noOne() {
     $('.mask-mony').on('tap', function (e) {
         $('.mask').html(`<div class="mask-img">
@@ -153,7 +153,7 @@ function noOne() {
 }
 
 
-/** 屏蔽分享 */
+/** 屏蔽分享s/
 // function onBridgeReady() {
 //     WeixinJSBridge.call('hideOptionMenu');
 //     }
